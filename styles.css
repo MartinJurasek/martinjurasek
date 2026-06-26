@@ -187,6 +187,19 @@ img {
     border-color: #fff;
 }
 
+.company-info {
+    background: var(--color-black);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+.company-info span {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    line-height: 1.6;
+}
+
 @media (max-width: 480px) {
     .headline br {
         display: none;
