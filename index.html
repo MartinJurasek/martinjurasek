@@ -55,6 +55,65 @@
                 </div>
             </div>
 
+            <section class="elsewhere" aria-roledescription="carousel" aria-labelledby="elsewhere-label">
+                <div class="elsewhere__header">
+                    <span class="clients__label elsewhere__label" id="elsewhere-label">Writing, projects &amp; talks</span>
+                    <div class="elsewhere__controls">
+                        <button type="button" class="elsewhere__arrow" data-dir="-1" aria-label="Previous">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                        </button>
+                        <button type="button" class="elsewhere__arrow" data-dir="1" aria-label="Next">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="elsewhere__track">
+                    <a href="https://www.loopyfarm.com" target="_blank" rel="noopener" class="card">
+                        <div class="card__cover card__cover--image">
+                            <img src="images/loopyfarm.jpg" alt="Loopy Farm" loading="lazy">
+                        </div>
+                        <span class="card__meta">Solo dev project</span>
+                        <span class="card__title">An idle farm tycoon for browser and phone</span>
+                    </a>
+
+                    <a href="https://www.reddit.com/r/aigamedev/comments/1sf9u0r/i_made_a_first_prompt_guide_how_to_start_making/" target="_blank" rel="noopener" class="card">
+                        <div class="card__cover card__cover--dark">
+                            <span class="card__cover-title">First<br>prompt guide</span>
+                        </div>
+                        <span class="card__meta">Guide · r/aigamedev</span>
+                        <span class="card__title">How to start making games with AI</span>
+                    </a>
+
+                    <a href="https://martinjurasek.substack.com" target="_blank" rel="noopener" class="card">
+                        <div class="card__cover card__cover--newsletter">
+                            <img src="images/newsletter.webp" alt="" class="card__logo" width="40" height="40">
+                            <span class="card__cover-title">Design<br>Breadcrumbs</span>
+                        </div>
+                        <span class="card__meta">Newsletter</span>
+                        <span class="card__title">Notes on UX, product design and games</span>
+                    </a>
+
+                    <a href="https://www.youtube.com/watch?v=8GAz1Wu7zxU" target="_blank" rel="noopener" class="card">
+                        <div class="card__cover card__cover--video">
+                            <img src="https://i.ytimg.com/vi/8GAz1Wu7zxU/hqdefault.jpg" alt="" loading="lazy">
+                            <span class="card__lang">EN</span>
+                        </div>
+                        <span class="card__meta">Talk · Digital Dragons</span>
+                        <span class="card__title">Onboarding new players to your mobile game</span>
+                    </a>
+
+                    <a href="https://www.youtube.com/watch?v=WQlZm68-MxQ" target="_blank" rel="noopener" class="card" lang="sk">
+                        <div class="card__cover card__cover--video">
+                            <img src="https://i.ytimg.com/vi/WQlZm68-MxQ/hqdefault.jpg" alt="" loading="lazy">
+                            <span class="card__lang">SK</span>
+                        </div>
+                        <span class="card__meta">Talk · SUXA</span>
+                        <span class="card__title">Top lekcie z vývoja hry pomocou AI</span>
+                    </a>
+                </div>
+            </section>
+
         </div>
     </main>
 
@@ -74,6 +133,36 @@
             <span>Earthquake s.r.o. · Kosicka 43C, 821 08 Bratislava, Slovakia · ICO: 46969071 · VAT: SK2023688084</span>
         </div>
     </div>
+
+    <script>
+        (function () {
+            var track = document.querySelector('.elsewhere__track');
+            var arrows = document.querySelectorAll('.elsewhere__arrow');
+            if (!track) return;
+
+            function step() {
+                var card = track.querySelector('.card');
+                var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+                return card ? card.offsetWidth + gap : track.clientWidth;
+            }
+
+            function update() {
+                var max = track.scrollWidth - track.clientWidth - 1;
+                arrows[0].disabled = track.scrollLeft <= 0;
+                arrows[1].disabled = track.scrollLeft >= max;
+            }
+
+            arrows.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    track.scrollBy({ left: step() * Number(btn.dataset.dir), behavior: 'smooth' });
+                });
+            });
+
+            track.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', update);
+            update();
+        })();
+    </script>
 
 </body>
 </html>

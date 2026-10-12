@@ -158,6 +158,200 @@ img {
     color: var(--color-black);
 }
 
+.elsewhere {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-gray-100);
+}
+
+.elsewhere__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.elsewhere__label {
+    margin-bottom: 0;
+}
+
+.elsewhere__controls {
+    display: flex;
+    gap: 0.375rem;
+}
+
+.elsewhere__arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #e2e2e2;
+    background: #fff;
+    color: var(--color-dark);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+.elsewhere__arrow:hover:not(:disabled) {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.elsewhere__arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.elsewhere__track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+}
+
+.elsewhere__track::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    flex: 0 0 calc((100% - 2rem) / 2.4);
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+.card__cover {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 0.875rem 1rem;
+    margin-bottom: 0.75rem;
+    transition: transform 0.25s ease;
+}
+
+.card:hover .card__cover {
+    transform: translateY(-3px);
+}
+
+.card__cover-title {
+    font-family: var(--font-serif);
+    font-size: 1.375rem;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+}
+
+.card__cover--newsletter {
+    background: #F9D34D;
+    color: var(--color-black);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.card__logo {
+    width: 40px;
+    height: 40px;
+}
+
+.card__cover--image {
+    background: var(--color-gray-100);
+    padding: 0;
+}
+
+.card__cover--image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+}
+
+.card__cover--dark {
+    background: var(--color-black);
+    color: #fafafa;
+}
+
+.card__cover--dark .card__cover-title {
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 2px;
+}
+
+.card__cover--video {
+    background: var(--color-dark);
+    padding: 0;
+}
+
+.card__cover--video img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(15%);
+}
+
+.card__cover--video::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+    border-radius: 50%;
+    background: rgba(10, 10, 10, 0.75) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F5C518'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center / 20px no-repeat;
+    transition: transform 0.2s;
+}
+
+.card:hover .card__cover--video::after {
+    transform: scale(1.08);
+}
+
+.card__lang {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--color-black);
+    background: var(--color-accent);
+    border-radius: 4px;
+    padding: 0 0.375rem;
+}
+
+.card__meta {
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+    letter-spacing: 0.02em;
+}
+
+.card__title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--color-gray-700);
+    transition: color 0.2s;
+}
+
+.card:hover .card__title {
+    color: var(--color-black);
+}
+
 .contact-section {
     background: var(--color-black);
     padding: 4rem 1.5rem;
@@ -203,5 +397,9 @@ img {
 @media (max-width: 480px) {
     .headline br {
         display: none;
+    }
+
+    .card {
+        flex-basis: 72%;
     }
 }
