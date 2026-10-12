@@ -86,7 +86,7 @@ img {
     gap: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--color-gray-100);
-    margin-bottom: 1.25rem;
+    margin-bottom: 2.25rem;
 }
 
 .stat {
@@ -103,8 +103,10 @@ img {
 
 .stat__label {
     font-size: 0.875rem;
-    color: var(--color-gray-500);
-    margin-top: 2px;
+    font-weight: 600;
+    color: var(--color-dark);
+    line-height: 1.4;
+    margin-top: 4px;
 }
 
 .note {
@@ -397,6 +399,10 @@ img {
 @media (max-width: 480px) {
     .headline br {
         display: none;
+    }
+
+    .stats {
+        gap: 1.75rem;
     }
 
     .card {
